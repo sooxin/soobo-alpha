@@ -10,6 +10,8 @@ import io.github.sooxin.soobo.core.io.FileInput;
 import io.github.sooxin.soobo.core.io.FileOutput;
 import io.github.sooxin.soobo.core.model.Article;
 import io.github.sooxin.soobo.core.model.WebSiteConfig;
+import io.github.sooxin.soobo.core.processor.DefaultURIProcessor;
+import io.github.sooxin.soobo.core.processor.URIProcessor;
 import io.github.sooxin.soobo.core.render.renderer.BeetlRenderer;
 import io.github.sooxin.soobo.core.tool.SooboUtil;
 

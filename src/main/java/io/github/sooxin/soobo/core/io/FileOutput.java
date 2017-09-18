@@ -10,11 +10,9 @@ import java.io.UnsupportedEncodingException;
 
 public class FileOutput {
 	public void saveFile(String targetPath, String data) {
-		// File targetFile = new File(new File(targetPath).getAbsolutePath());
 		File targetFile = new File(targetPath);
-		// ############################
-		// ####留待处理异常，虽然几乎不会出现 #
-		// ############################
+		
+		/* + 留待处理异常 + */
 		if (targetFile.isDirectory()) {
 			System.out.println("# 目标文件应该为文件而非目录！");
 		}

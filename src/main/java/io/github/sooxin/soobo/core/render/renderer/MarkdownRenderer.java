@@ -38,10 +38,6 @@ public class MarkdownRenderer {
 		return document;
 	}
 	
-//	public String getRenderedHtmlContent(Node document) {
-//		
-//		
-//	}
 
 	public Article getParsedResult(String str) {
 		org.commonmark.parser.Parser parser = org.commonmark.parser.Parser.builder().extensions(yamlExtentions)

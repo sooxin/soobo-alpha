@@ -33,9 +33,5 @@ public class Resource {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		new FileOutput().saveFile("soobo-cli.json", gson.toJson(new CLIConfig()));
 	}
-	// public static void main(String[] args) {
-	// loadSooboCLIResource();
-	// }
-
 
 }

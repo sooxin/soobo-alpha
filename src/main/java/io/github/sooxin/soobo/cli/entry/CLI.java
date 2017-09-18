@@ -31,7 +31,7 @@ public class CLI {
 	private IndexRender indexRender = new IndexRender();
 	private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-	// 编译一篇文章，并生成首页等
+	// 只编译一篇文章
 	public void generate(String mdFilePath) {
 		System.out.println("> 正在准备编译文章...");
 		long startTime = System.currentTimeMillis();
@@ -45,7 +45,7 @@ public class CLI {
 		System.out.println("> 文章编译结束,耗时" + (endTime - startTime) + "ms");
 	}
 
-	// 编译一篇文章，并生成首页等
+	// 编译一篇文章，并生成首页，归档页等
 	public void generateAll(String mdFilePath) {
 		System.out.println("> 正在准备编译文章...");
 		long startTime = System.currentTimeMillis();
@@ -65,7 +65,7 @@ public class CLI {
 	}
 
 	// 初始化一个文件夹为项目文件夹
-	// +++++++++++++差错检测，出现重名的项目要提示
+	/* + 差错检测，出现重名的项目应当提示 + */
 	public void init(String dirPath) {
 		System.out.println("> 正在初始化...");
 		long startTime = System.currentTimeMillis();
@@ -136,7 +136,6 @@ public class CLI {
 		options.addOption("index", false, "生成首页");
 		options.addOption("arc", "archive", false, "生成归档页面");
 		options.addOption("test", true, "test1");
-		options.addOption("t2", true, "test2");
 
 		CommandLineParser parser = new DefaultParser();
 		CommandLine cmd = parser.parse(options, args);
@@ -154,8 +153,6 @@ public class CLI {
 			cli.generateArchive();
 		} else if (cmd.hasOption("test")) {
 			cli.generateArchive();
-		} else if (cmd.hasOption("t2")) {
-			System.out.println("test2:" + cmd.getOptionValue("t2"));
 		} else {
 			System.out.println("others");
 		}

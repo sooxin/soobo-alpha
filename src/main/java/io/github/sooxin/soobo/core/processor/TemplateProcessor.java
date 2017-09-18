@@ -1,4 +1,4 @@
-package io.github.sooxin.soobo.core.render;
+package io.github.sooxin.soobo.core.processor;
 
 import io.github.sooxin.soobo.core.io.FileInput;
 

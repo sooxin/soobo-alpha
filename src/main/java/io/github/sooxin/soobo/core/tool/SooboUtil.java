@@ -71,7 +71,7 @@ public class SooboUtil {
 	}
 
 	public static void copyFolder(File srcFolder, File destFolder) {
-		/* +++++异常判断+++++ */
+		/* ++异常判断++ */
 		// 遍历原文件夹
 		for (File f : srcFolder.listFiles()) {
 			if (f.isFile()) {
@@ -88,20 +88,7 @@ public class SooboUtil {
 
 	}
 
-	// public static void copyFile(File srcFile,File destFile) {
-	// FileInput input=new FileInput();
-	// FileOutput output=new FileOutput();
-	// output.saveFile(destFile.getAbsolutePath(),
-	// input.getFileContent(srcFile.getAbsolutePath()));;
-	// }
 	public static void copyFile(File srcFile, File destFile) {
-		// File destFile=new File(destPath);
-		// if (destFile.isDirectory()) {
-		// System.out.println("> 目标文件应该为文件而非目录！");
-		// }
-		// if ((destFile.getParentFile()!=null)&&(!destFile.getParentFile().exists())) {
-		// destFile.getParentFile().mkdirs();
-		// }
 		FileInputStream fis = null;
 		FileOutputStream fos = null;
 		try {
@@ -130,25 +117,29 @@ public class SooboUtil {
 		}
 
 	}
+
 	/**
 	 * 删除指定文件夹下的所有文件和文件夹，但不删除该指定的文件夹
-	 * @param dir	指定的文件夹
+	 * 
+	 * @param dir
+	 *            指定的文件夹
 	 */
 	public static void deleteAllFilesInDirectory(File dir) {
-		if(!dir.exists()) {
-			System.out.println("# "+dir.getAbsolutePath()+"文件夹并不存在，无需删除！");
+		if (!dir.exists()) {
+			System.out.println("# " + dir.getAbsolutePath() + "文件夹并不存在，无需删除！");
 		}
-		if(!dir.isDirectory()) {
-			System.out.println("# "+dir.getAbsolutePath()+"不是文件夹！");
+		if (!dir.isDirectory()) {
+			System.out.println("# " + dir.getAbsolutePath() + "不是文件夹！");
 			return;
 		}
-		for(File file:dir.listFiles()) {
-			if(file.isDirectory()) {
+		for (File file : dir.listFiles()) {
+			if (file.isDirectory()) {
 				SooboUtil.deleteAllFilesInDirectory(file);
 			}
 			file.delete();
 		}
 	}
+
 	// private static void traverseFiles(File root) {
 	// }
 }

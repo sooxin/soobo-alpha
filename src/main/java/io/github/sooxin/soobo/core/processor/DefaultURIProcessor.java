@@ -1,4 +1,4 @@
-package io.github.sooxin.soobo.core.render;
+package io.github.sooxin.soobo.core.processor;
 
 public class DefaultURIProcessor implements URIProcessor {
 	private static String rootLink; // 整个网站父目录链接
