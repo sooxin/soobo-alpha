@@ -26,7 +26,6 @@ public class CLIConfig {
 		cliConfig.setDefaultProjectName("");
 		cliConfig.setCurrentProjectName("");
 		return cliConfig;
-
 	}
 	
 	public static CLIConfig getParsedCLIConfig() {

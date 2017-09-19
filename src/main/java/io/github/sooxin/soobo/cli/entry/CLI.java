@@ -14,8 +14,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
 import io.github.sooxin.soobo.cli.model.CLIConfig;
-import io.github.sooxin.soobo.cli.model.WebSite;
-import io.github.sooxin.soobo.core.dao.ArticleDao;
 import io.github.sooxin.soobo.core.io.FileInput;
 import io.github.sooxin.soobo.core.io.FileOutput;
 import io.github.sooxin.soobo.core.model.WebSiteConfig;
@@ -31,7 +29,10 @@ public class CLI {
 	private IndexRender indexRender = new IndexRender();
 	private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-	// 只编译一篇文章
+	/**
+	 * 只编译一篇文章，并存储相关数据到数据库
+	 * @param mdFilePath	markdown 文件路径
+	 */
 	public void generate(String mdFilePath) {
 		System.out.println("> 正在准备编译文章...");
 		long startTime = System.currentTimeMillis();
@@ -45,7 +46,10 @@ public class CLI {
 		System.out.println("> 文章编译结束,耗时" + (endTime - startTime) + "ms");
 	}
 
-	// 编译一篇文章，并生成首页，归档页等
+	/**
+	 * 编译一篇文章，并根据数据库生成首页，归档页等
+	 * @param mdFilePath	markdown 文件路径
+	 */
 	public void generateAll(String mdFilePath) {
 		System.out.println("> 正在准备编译文章...");
 		long startTime = System.currentTimeMillis();
@@ -57,7 +61,9 @@ public class CLI {
 		long endTime = System.currentTimeMillis();
 		System.out.println("> 文章编译结束,耗时" + (endTime - startTime) + "ms");
 	}
-
+	/**
+	 * 根据数据库生成首页
+	 */
 	public void generateIndex() {
 		WebSiteConfig webSiteConfig = WebSiteConfig.getParsedWebSiteConfig();
 		indexRender.render(webSiteConfig.getProjectRootPath() + File.separator + "template" + File.separator

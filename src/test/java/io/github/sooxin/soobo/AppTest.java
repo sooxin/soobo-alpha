@@ -1,4 +1,4 @@
-package io.github.sooxin.soobo3;
+package io.github.sooxin.soobo;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
