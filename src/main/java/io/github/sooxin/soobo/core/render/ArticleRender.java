@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.commonmark.ext.gfm.strikethrough.internal.StrikethroughHtmlNodeRenderer;
+
 import io.github.sooxin.soobo.core.dao.ArticleDao;
 import io.github.sooxin.soobo.core.io.FileInput;
 import io.github.sooxin.soobo.core.io.FileOutput;
@@ -42,6 +44,10 @@ public class ArticleRender {
 	 *            markdown 文章路径
 	 */
 	public void render(String templatePath, String articlePath) {
+		if(!checkMarkdownFile(articlePath)) {
+			System.out.println("> 程序已退出！");
+			System.exit(0);
+		}
 		String markdownFile = fileInput.getFileContent(articlePath); // 读取 markdown 文章内容
 		String template = fileInput.getFileContent(templatePath); // 读取文章模板
 
@@ -102,5 +108,25 @@ public class ArticleRender {
 		fileOutput.saveFile(webSiteConfig.getWebPagesStoredPath() + File.separator + "posts\\"
 				+ SooboUtil.getParsedDatePath(article.getCreatedDate()) + File.separator + article.getArticleLink()
 				+ ".html", articlePage);
+	}
+	
+	/**
+	 * 检查 markdown 文章路路径的存在和后缀
+	 * @param path	md 文章路径
+	 * @return	检查无问题则返回 true
+	 */
+	private boolean checkMarkdownFile(String path) {
+		File file=new File(path);
+		if(!file.exists()) {
+			System.out.println("# 文章路径不存在，请检查输入参数！");
+			return false;
+		}
+		String mdFileName=file.getName();
+		String suffix=mdFileName.substring(mdFileName.lastIndexOf(".")+1);
+		if(!suffix.equals("md")) {
+			System.out.println("# 文章后缀应为 md ，请检查是否为 markdown 文件！");
+			return false;
+		}
+		return true;
 	}
 }
