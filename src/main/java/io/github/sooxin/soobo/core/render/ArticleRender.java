@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.commonmark.ext.gfm.strikethrough.internal.StrikethroughHtmlNodeRenderer;
-
 import io.github.sooxin.soobo.core.dao.ArticleDao;
 import io.github.sooxin.soobo.core.io.FileInput;
 import io.github.sooxin.soobo.core.io.FileOutput;
@@ -48,6 +46,7 @@ public class ArticleRender {
 			System.out.println("> 程序已退出！");
 			System.exit(0);
 		}
+
 		String markdownFile = fileInput.getFileContent(articlePath); // 读取 markdown 文章内容
 		String template = fileInput.getFileContent(templatePath); // 读取文章模板
 
@@ -109,7 +108,7 @@ public class ArticleRender {
 				+ SooboUtil.getParsedDatePath(article.getCreatedDate()) + File.separator + article.getArticleLink()
 				+ ".html", articlePage);
 	}
-	
+
 	/**
 	 * 检查 markdown 文章路路径的存在和后缀
 	 * @param path	md 文章路径
@@ -129,4 +128,5 @@ public class ArticleRender {
 		}
 		return true;
 	}
+
 }
