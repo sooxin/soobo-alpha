@@ -102,7 +102,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>io.github.sooxin.soobo3.cli.entry.CLI</mainClass>
+							<mainClass>io.github.sooxin.soobo.cli.entry.CLI</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
