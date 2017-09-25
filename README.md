@@ -32,7 +32,7 @@
   - 删除某一篇博文，删除对应的 `html` 文件和数据库数据：`java -jar soobo -del articleId`
   - 重新编译某一篇文章：`java -jar soobo.jar -regen markdownFilePath`
 - 其他：
-  - 完善和持续优化前端主题 `BlackLovesWhite` ，目前样式可参见我的博客：https://sooxin.github.io，争取以独立的 repo 发出来。
+  - 完善和持续优化前端主题 `BlackLovesWhite` ，目前样式可参见我的博客：https://sooxin.github.io ，争取以独立的 repo 发出来。
 
 
 
