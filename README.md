@@ -17,9 +17,9 @@
 
 目前实现的命令：
 
-- 初始化目录为项目根目录：`java -jar sooobo.jar -init dirPath`
+- 初始化目录为项目根目录：`java -jar soobo.jar -init dirPath`
 - 切换并使用项目：`java -jar soobo.jar -use projectName`
-- 编译一篇 markdown文章，渲染为 `html` 文件，并保存到数据库：`java -jar soobo.jar -gen markdownFilePath`
+- 编译一篇 markdown 文章，渲染为 `html` 文件，并保存到数据库：`java -jar soobo.jar -gen markdownFilePath`
 - 生成首页：`java -jar soobo.jar -index`
 - 生成归档页：`java -jar soobo.jar -arc`
 - 同时编译文章，生成首页和归档页：`java -jar soobo.jar -ga  markdownFilePath`
@@ -29,7 +29,7 @@
 下一步计划：
 
 - 计划支持的命令：
-  - 删除某一篇博文，删除对应的 `html` 文件和数据库数据：`java -jar soobo -del articleId`
+  - ~~删除某一篇博文，删除对应的 `html` 文件和数据库数据：`java -jar soobo -del articleId`~~（已实现！）
   - 重新编译某一篇文章：`java -jar soobo.jar -regen markdownFilePath`
 - 其他：
   - 完善和持续优化前端主题 `BlackLovesWhite` ，目前样式可参见我的博客：https://sooxin.github.io ，争取以独立的 repo 发出来。
