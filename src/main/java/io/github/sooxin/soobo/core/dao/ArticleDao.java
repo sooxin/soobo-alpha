@@ -122,12 +122,12 @@ public class ArticleDao {
 		conn.close();
 	}
 
-	public void deleteArticle(String articleId) throws SQLException {
+	public void deleteArticle(int articleId) throws SQLException {
 		Connection conn = DBConnector.getConnection();
 		String sql = "delete from article where id=?";
 
 		PreparedStatement psmt = conn.prepareStatement(sql);
-		psmt.setString(1, articleId);
+		psmt.setInt(1, articleId);
 
 		psmt.executeUpdate();
 
