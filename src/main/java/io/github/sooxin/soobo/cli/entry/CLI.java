@@ -2,6 +2,7 @@ package io.github.sooxin.soobo.cli.entry;
 
 import java.io.File;
 import java.io.StringReader;
+import java.sql.SQLException;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -14,6 +15,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 
 import io.github.sooxin.soobo.cli.model.CLIConfig;
+import io.github.sooxin.soobo.core.dao.ArticleDao;
 import io.github.sooxin.soobo.core.io.FileInput;
 import io.github.sooxin.soobo.core.io.FileOutput;
 import io.github.sooxin.soobo.core.model.WebSiteConfig;
@@ -126,7 +128,23 @@ public class CLI {
 		archiveRender.render(webSiteConfig.getProjectRootPath() + File.separator + "template" + File.separator
 				+ "BeeBlackLovesWhite" + File.separator + "archive.html");
 	}
-
+	public void deleteArticle(String id) {
+		ArticleDao articleDao=new ArticleDao();
+		int articleId=Integer.parseInt(id);
+		try {
+			if(articleDao.selectArticle(articleId)!=null) {
+				articleDao.deleteArticle(articleId);
+			}else {
+				System.out.println("# ID为"+id+"的文章不存在！请检查参数ID！");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("# ID为"+id+"的文章删除失败！请检查重试！");
+			e.printStackTrace();
+		}
+		System.out.println("> 已从数据库中删除ID为"+id+"的文章！请自定删除对应生成的网页文件！");
+	}
 	public void test() {
 
 	}
@@ -141,6 +159,7 @@ public class CLI {
 		options.addOption("use", true, "使用某个项目");
 		options.addOption("index", false, "生成首页");
 		options.addOption("arc", "archive", false, "生成归档页面");
+		options.addOption("del", "delete", true, "删除一篇文章的数据库记录");
 		options.addOption("test", true, "test1");
 
 		CommandLineParser parser = new DefaultParser();
@@ -157,6 +176,8 @@ public class CLI {
 			cli.generateIndex();
 		} else if (cmd.hasOption("arc")) {
 			cli.generateArchive();
+		} else if (cmd.hasOption("del")) {
+			cli.deleteArticle(cmd.getOptionValue("del"));
 		} else if (cmd.hasOption("test")) {
 			cli.generateArchive();
 		} else {
